@@ -18,7 +18,10 @@ constructor(
                 val fragment = MainFragment()
                 fragment
             }
-
+            InsertFragment::class.java.name -> {
+                val fragment = InsertFragment()
+                fragment
+            }
             else -> super.instantiate(classLoader, className)
         }
     }

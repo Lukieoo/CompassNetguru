@@ -8,6 +8,19 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.lukieoo.compassnetguru.fragment.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_insertFragment"
+            app:destination="@id/insertFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/insertFragment"
+        android:name="com.lukieoo.compassnetguru.fragment.InsertFragment"
+        android:label="InsertFragment" >
+        <action
+            android:id="@+id/action_insertFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>

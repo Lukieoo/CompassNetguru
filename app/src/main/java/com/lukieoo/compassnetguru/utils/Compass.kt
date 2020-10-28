@@ -11,6 +11,12 @@ import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 
+/**
+ * Mandatory method :
+ * @param setImageViewCompass set compass image
+ * @param setDegreeTitle set text for deegre
+ */
+
 class Compass(private val context: Context) : SensorEventListener {
 
     // record the compass picture angle turned
@@ -26,6 +32,7 @@ class Compass(private val context: Context) : SensorEventListener {
     init {
         mSensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
+
 
 
     fun setImageViewCompass(imageViewCompass: ImageView?) {
