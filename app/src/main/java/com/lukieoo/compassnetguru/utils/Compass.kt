@@ -26,7 +26,7 @@ class Compass(private val context: Context) : SensorEventListener {
     private var mSensorManager: SensorManager? = null
 
     private var imageViewCompass: ImageView? = null
-    private var degreeTitle: TextView? = null
+//    private var degreeTitle: TextView? = null
 
 
     init {
@@ -38,9 +38,9 @@ class Compass(private val context: Context) : SensorEventListener {
     fun setImageViewCompass(imageViewCompass: ImageView?) {
         this.imageViewCompass = imageViewCompass
     }
-    fun setDegreeTitle(degreeTitle: TextView?) {
-        this.degreeTitle = degreeTitle
-    }
+//    fun setDegreeTitle(degreeTitle: TextView?) {
+//        this.degreeTitle = degreeTitle
+//    }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 
@@ -48,7 +48,8 @@ class Compass(private val context: Context) : SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         val degree = Math.round(event!!.values[0]).toFloat()
-        degreeTitle!!.text = "Heading: " + java.lang.Float.toString(degree) + " degrees"
+
+        //degreeTitle!!.text = "Heading: " + java.lang.Float.toString(degree) + " degrees"
 
         // create a rotation animation (reverse turn degree degrees)
         val ra = RotateAnimation(

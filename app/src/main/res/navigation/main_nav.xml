@@ -17,10 +17,6 @@
     <fragment
         android:id="@+id/insertFragment"
         android:name="com.lukieoo.compassnetguru.fragment.InsertFragment"
-        android:label="InsertFragment" >
-        <action
-            android:id="@+id/action_insertFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+        android:label="InsertFragment" />
 
 </navigation>

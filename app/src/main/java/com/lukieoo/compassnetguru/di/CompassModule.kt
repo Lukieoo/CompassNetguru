@@ -17,4 +17,5 @@ object CompassModule {
     fun provideCompass(@ApplicationContext context: Context): Compass {
         return Compass(context)
     }
+
 }
