@@ -4,21 +4,30 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import com.lukieoo.compassnetguru.R
-import kotlinx.android.synthetic.main.fragment_main.*
-import javax.inject.Inject
 
-class TargetHolder constructor( var mathematicalOperations: MathematicalOperations ,var  context: Context ) {
 
-    private  var myBitmap: Bitmap
-    private  var tempCanvas: Canvas
-    private  var paint: Paint
-    private  var tempBitmap: Bitmap
+class TargetHolder constructor(
+    var mathematicalOperations: MathematicalOperations,
+    var context: Context
+) {
+
+    private var myBitmap: Bitmap
+    private var myBitmapArrow: Bitmap
+    private var tempCanvas: Canvas
+    private var paint: Paint
+    private var tempBitmap: Bitmap
 
     init {
         myBitmap = BitmapFactory.decodeResource(
             context.resources,
             R.drawable.img_compass
         )
+        myBitmapArrow = BitmapFactory.decodeResource(
+            context.resources,
+            R.drawable.forward
+        )
+
+        myBitmapArrow = Bitmap.createScaledBitmap(myBitmapArrow, 300, 300, true)
 
         paint = Paint()
         paint.color = Color.RED
@@ -35,10 +44,9 @@ class TargetHolder constructor( var mathematicalOperations: MathematicalOperatio
         tempCanvas = Canvas(tempBitmap)
 
         tempCanvas.drawBitmap(myBitmap, 0f, 0f, paint)
-//        tempCanvas.drawCircle(myBitmap.width / 2f, myBitmap.height / 2f, 50f, paint)
     }
 
-    fun setTarget(x1: Double, y1: Double, x2: Double, y2: Double) :BitmapDrawable{
+    fun setTarget(x1: Double, y1: Double, x2: Double, y2: Double): BitmapDrawable {
 
         var angle = mathematicalOperations.azimuth(
             x1,
@@ -49,24 +57,48 @@ class TargetHolder constructor( var mathematicalOperations: MathematicalOperatio
         )
 
         var x: Int =
-            (myBitmap.width / 2f + Math.cos(Math.toRadians(angle - 90)) * (myBitmap.width - 90) / 2).toInt()
+            (myBitmap.width / 2f + Math.cos(Math.toRadians(angle - 90)) * (myBitmap.width - 950) / 2).toInt()
         var y: Int =
-            (myBitmap.height / 2f + Math.sin(Math.toRadians(angle - 90)) * (myBitmap.height - 90) / 2).toInt()
+            (myBitmap.width / 2f + Math.sin(Math.toRadians(angle - 90)) * (myBitmap.width - 950) / 2).toInt()
 
-        tempCanvas.drawCircle(x.toFloat(), y.toFloat(), 150f, paint)
+//        tempCanvas.drawCircle(x.toFloat(), y.toFloat(), 150f, paint)
+        myBitmapArrow = rotateBitmap(myBitmapArrow, angle = angle.toFloat())
+        tempCanvas.drawBitmap(myBitmapArrow, x.toFloat(), y.toFloat(), paint)
 
         return BitmapDrawable(context.resources, tempBitmap)
 
     }
-    fun clear( ){
+
+    fun clear() {
         tempBitmap =
             Bitmap.createBitmap(
                 myBitmap.width,
                 myBitmap.height,
                 Bitmap.Config.ARGB_8888
             )
+        myBitmapArrow = BitmapFactory.decodeResource(
+            context.resources,
+            R.drawable.forward
+        )
+
+        myBitmapArrow = Bitmap.createScaledBitmap(myBitmapArrow, 200, 200, true)
+
         tempCanvas = Canvas(tempBitmap)
 
         tempCanvas.drawBitmap(myBitmap, 0f, 0f, paint)
+    }
+
+    private fun rotateBitmap(source: Bitmap, angle: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(angle)
+        return Bitmap.createBitmap(
+            source,
+            0,
+            0,
+            source.width,
+            source.height,
+            matrix,
+            true
+        )
     }
 }

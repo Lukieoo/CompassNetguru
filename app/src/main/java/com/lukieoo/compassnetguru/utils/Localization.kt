@@ -22,10 +22,6 @@ class Localization(private val context: Context) {
     private var locationManager: LocationManager? = null
     private var viewModel: MainViewModel? = null
 
-    private var permissions = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {

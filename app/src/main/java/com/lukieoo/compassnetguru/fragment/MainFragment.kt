@@ -1,12 +1,13 @@
 package com.lukieoo.compassnetguru.fragment
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.util.TypedValue
+import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.PermissionChecker.checkCallingOrSelfPermission
@@ -55,6 +56,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
     lateinit var viewModel: MainViewModel
 
+    private var isLoaded: Boolean = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -72,10 +74,16 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
     private fun initView() {
 
-        btnCoordinates.setOnClickListener {
-            navController = Navigation.findNavController(it)
-            navController.navigate(R.id.action_mainFragment_to_insertFragment)
-        }
+        if (isLoaded) hideView()
+
+            btnCoordinates.setOnClickListener {
+                navController = Navigation.findNavController(it)
+                if (navController.currentDestination?.id == R.id.mainFragment) {
+                    navController.navigate(R.id.action_mainFragment_to_insertFragment)
+                }
+            }
+
+
     }
 
     private fun initViewModel() {
@@ -88,6 +96,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
                 if (degreeTitle != null) {
 
+                    if (!isLoaded) showView()
 
                     degreeTitle!!.text =
                         "Distance from the destination: " + (mathematicalOperations.distance(
@@ -119,11 +128,24 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
     private fun initLocalization() {
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkPermission(permissions)) {
                 localization!!.setListenerLocationUpdates(viewModel)
+                var gps_enabled = false
+                try {
+                    var lm: LocationManager =
+                        requireActivity().getSystemService(Context.LOCATION_SERVICE) as (LocationManager)
+                    gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                if (!gps_enabled) {
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
             } else {
                 requestPermissions(permissions, PERMISSION_REQUEST)
+                showView()
             }
         }
     }
@@ -174,6 +196,16 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
 
         }
+    }
+
+    private fun showView() {
+        progressBar.visibility = View.GONE
+        isLoaded = true
+    }
+
+    private fun hideView() {
+        progressBar.visibility = View.VISIBLE
+        isLoaded = false
     }
 
     override fun onResume() {

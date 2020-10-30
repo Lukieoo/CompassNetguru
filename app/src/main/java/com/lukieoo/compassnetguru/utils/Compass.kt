@@ -12,9 +12,9 @@ import android.widget.ImageView
 import android.widget.TextView
 
 /**
+ * The class responsible for the compass
  * Mandatory method :
  * @param setImageViewCompass set compass image
- * @param setDegreeTitle set text for deegre
  */
 
 class Compass(private val context: Context) : SensorEventListener {
@@ -26,7 +26,6 @@ class Compass(private val context: Context) : SensorEventListener {
     private var mSensorManager: SensorManager? = null
 
     private var imageViewCompass: ImageView? = null
-//    private var degreeTitle: TextView? = null
 
 
     init {
@@ -46,8 +45,6 @@ class Compass(private val context: Context) : SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         val degree = Math.round(event!!.values[0]).toFloat()
-
-        //degreeTitle!!.text = "Heading: " + java.lang.Float.toString(degree) + " degrees"
 
         // create a rotation animation (reverse turn degree degrees)
         val ra = RotateAnimation(
