@@ -1,9 +1,9 @@
 package com.lukieoo.compassnetguru.di
 
 import android.content.Context
-import com.lukieoo.compassnetguru.utils.Compass
 import com.lukieoo.compassnetguru.utils.Localization
-import com.lukieoo.compassnetguru.utils.MyCoordinates
+import com.lukieoo.compassnetguru.utils.MathematicalOperations
+import com.lukieoo.compassnetguru.utils.TargetHolder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,15 +13,16 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object LocalizationModule {
+object TargetModule {
+
     @Singleton
     @Provides
-    fun provideLocalization(@ApplicationContext context: Context): Localization {
-        return Localization(context)
+    fun provideMathematicalOperations(): MathematicalOperations {
+        return MathematicalOperations()
     }
     @Singleton
     @Provides
-    fun provideMyCoordinates(@ApplicationContext context: Context): MyCoordinates {
-        return MyCoordinates(context)
+    fun provideTargetHolder(mathematicalOperations:MathematicalOperations,@ApplicationContext context: Context): TargetHolder {
+        return TargetHolder(mathematicalOperations,context)
     }
 }

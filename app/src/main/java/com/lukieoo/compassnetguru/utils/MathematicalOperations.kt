@@ -1,6 +1,6 @@
 package com.lukieoo.compassnetguru.utils
 
-class CalculateDistance {
+class MathematicalOperations {
 
     fun distance(
         lat1: Double,
@@ -30,18 +30,15 @@ class CalculateDistance {
     }
 
 
-    fun az1(x1: Double, y1: Double, x2: Double, y2: Double): Double {
+    fun azimuth(x1: Double, y1: Double, x2: Double, y2: Double): Double {
 
         var pi: Double
-        var rg: Double
         var dx: Double
         var dy: Double
-        var d: Double
         var a: Double
         var az: Double
 
         pi = 4.0 * Math.atan(1.0)
-        rg = 200.0 / pi
         dx = x2 - x1
         dy = y2 - y1
         if (dx == 0.0) {
@@ -57,8 +54,6 @@ class CalculateDistance {
 
         }
         az = a  *180/Math.PI
-//        az = a
-
         return az
     }
 }

@@ -30,7 +30,7 @@ class Localization(private val context: Context) {
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
 
-            viewModel!!.setCoordinates(Coordinates(latitude =location.longitude,longitude = location.latitude ))
+            viewModel!!.setCoordinates(Coordinates(latitude =location.latitude,longitude = location.longitude ))
 
         }
 

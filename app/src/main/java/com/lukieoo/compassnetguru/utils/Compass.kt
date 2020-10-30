@@ -38,9 +38,7 @@ class Compass(private val context: Context) : SensorEventListener {
     fun setImageViewCompass(imageViewCompass: ImageView?) {
         this.imageViewCompass = imageViewCompass
     }
-//    fun setDegreeTitle(degreeTitle: TextView?) {
-//        this.degreeTitle = degreeTitle
-//    }
+
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 

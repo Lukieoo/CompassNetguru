@@ -14,7 +14,10 @@ import com.lukieoo.compassnetguru.ui.MainViewModel
 import com.lukieoo.compassnetguru.utils.MyCoordinates
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_insert.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
 
@@ -22,7 +25,8 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
 
     private lateinit var viewModel: MainViewModel
 
-    private lateinit var  myCoordinates: MyCoordinates
+    @Inject
+    lateinit var myCoordinates: MyCoordinates
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +37,7 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
     }
 
     private fun initView() {
-        myCoordinates = MyCoordinates(requireContext())
+
         latitude.text = myCoordinates.getLatitude().toString().toEditable()
         longitude.text = myCoordinates.getLongitude().toString().toEditable()
 
@@ -43,23 +47,23 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
             myCoordinates.setLongitude(longitude.text.toString().toDouble())
 
             navController = Navigation.findNavController(it)
-            navController!!.popBackStack()
+            navController.popBackStack()
         }
     }
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
-        activity?.let {
-            viewModel.getCoordinates().observe(it, Observer {
+        activity.let {
+            viewModel.getCoordinates().observe(it!!, Observer {
                 if (it.latitude != null && it.longitude != null) {
-                    if (latitudeCurrent != null &&longitudeCurrent !=null) {
+                    if (latitudeCurrent != null && longitudeCurrent != null) {
                         latitudeCurrent.text = it.latitude.toString().toEditable()
                         longitudeCurrent.text = it.longitude.toString().toEditable()
                     }
 
-                }else{
-                    if (latitudeCurrent != null &&longitudeCurrent !=null) {
+                } else {
+                    if (latitudeCurrent != null && longitudeCurrent != null) {
                         latitudeCurrent.text = "none".toEditable()
                         longitudeCurrent.text = "none".toEditable()
                     }

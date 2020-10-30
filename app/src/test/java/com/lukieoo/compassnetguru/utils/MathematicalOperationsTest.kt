@@ -5,18 +5,18 @@ import org.junit.Before
 import org.junit.Test
 
 
-class CalculateDistanceTest{
+class MathematicalOperationsTest{
 
-    lateinit var calculateDistance:CalculateDistance
+    lateinit var mathematicalOperations:MathematicalOperations
 
     @Before
     fun setUpTest(){
-        calculateDistance =CalculateDistance()
+        mathematicalOperations =MathematicalOperations()
     }
 
     @Test
     fun testCalculateDistance(){
-       var distance= calculateDistance.distance(
+       var distance= mathematicalOperations.distance(
             lat1 =10.0,
             lat2 =10.0,
             lng1 =13.0,
@@ -28,7 +28,7 @@ class CalculateDistanceTest{
 
     @Test
     fun testAz1(){
-        var distance= calculateDistance.az1(
+        var distance= mathematicalOperations.azimuth(
              10.0,
              10.0,
             13.0,
