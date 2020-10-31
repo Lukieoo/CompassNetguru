@@ -5,7 +5,7 @@
     <string name="set_destination">Set Destination</string>
     <string name="distance_to_destination">Distance To Destination: </string>
     <string name="your_destination">Your Destination</string>
-    <string name="your_current_position">Your Current position</string>
+    <string name="your_current_position">Your Current Position</string>
     <string name="latitude">latitude</string>
     <string name="longitude">longitude</string>
     <string name="insert_latitude">Insert latitude</string>

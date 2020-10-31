@@ -11,7 +11,7 @@
     <style name="MyEditTextStyle" parent="android:Widget.EditText">
         <item name="android:textColor">@color/textColor</item>
         <item name="drawableTint">@color/colorMain</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">15dp</item>
 
         <item name="android:background">@drawable/editext_backround</item>
         <item name="android:textSize">15sp</item>

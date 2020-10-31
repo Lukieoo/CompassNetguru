@@ -39,7 +39,7 @@ constructor(  @Assisted private val savedStateHandle: SavedStateHandle) : ViewMo
     fun initShared(context:Context){
          myCoordinates= MyCoordinates(context)
     }
-    fun setDestinationEvent() {
+    private fun setDestinationEvent() {
         viewModelScope.launch {
             userIntent.consumeAsFlow().collect {
                 when (it) {

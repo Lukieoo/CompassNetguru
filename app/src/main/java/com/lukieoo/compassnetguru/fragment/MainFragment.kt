@@ -48,13 +48,13 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
     lateinit var navController: NavController
 
+    lateinit var viewModel: MainViewModel
+
 
     private var permissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
-
-    lateinit var viewModel: MainViewModel
 
     private var isLoaded: Boolean = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,7 +96,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
                     if (!isLoaded) showView()
                     degreeTitle!!.text =
-                         (mathematicalOperations.distance(
+                         " "+(mathematicalOperations.distance(
                             it.latitude,
                             it.longitude,
                             myCoordinates.getLatitude(),
