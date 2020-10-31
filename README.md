@@ -5,6 +5,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies) 
 * [Screenshot](#screenshot) 
+* [Download](#download) 
 ## General info
 Compass Project is a simple compass, which displays a direction for the user to follow. It has a feature
 to indicate the destination based on a geographic coordinate system.
@@ -29,6 +30,9 @@ I've used dependency injection with Hilt because is very similar to Dagger 2 and
 
 ## Screenshot
 ![Recordit GIF](https://media.giphy.com/media/Ah52C0yXqDnO2hx43v/giphy.gif)
+
+## Download 
+**http://anioncode.pl/Github/compassNetguru.apk**
 
 ## License open source 
 
