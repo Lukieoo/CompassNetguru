@@ -24,7 +24,7 @@ class TargetHolder constructor(
         )
         myBitmapArrow = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.forward
+            R.drawable.img_arrow
         )
 
         myBitmapArrow = Bitmap.createScaledBitmap(myBitmapArrow, 300, 300, true)
@@ -78,7 +78,7 @@ class TargetHolder constructor(
             )
         myBitmapArrow = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.forward
+            R.drawable.img_arrow
         )
 
         myBitmapArrow = Bitmap.createScaledBitmap(myBitmapArrow, 200, 200, true)

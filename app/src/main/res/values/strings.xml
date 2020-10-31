@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">CompassNetguru</string>
-    <string name="set_your_target">set your target</string>
+    <string name="app_name">Compass</string>
+    <string name="set_your_target">Set Your Destination</string>
     <string name="todo">TODO</string>
+    <string name="set_destination">Set Destination</string>
+    <string name="distance_to_destination">Distance To Destination: </string>
+    <string name="your_destination">Your Destination</string>
+    <string name="your_current_position">Your Current position</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
+    <string name="insert_latitude">Insert latitude</string>
+    <string name="insert_longitude">Insert longitude</string>
 </resources>

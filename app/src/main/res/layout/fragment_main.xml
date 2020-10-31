@@ -1,54 +1,114 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="#fff" >
+    android:layout_height="match_parent" >
 
-    <ProgressBar
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:indeterminate="true"
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"/>
+
     <RelativeLayout
-        android:visibility="visible"
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        style="@style/MyEditTextStyle"
-        android:fontFamily="@font/productsansmedium"
-        android:id="@+id/degreeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"
-        android:text="" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnLayout"
+        android:visibility="visible">
 
-    <ImageView
-        android:padding="10dp"
-        android:adjustViewBounds="true"
-        android:id="@+id/imageViewCompass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/degreeTitle"
-        android:layout_above="@+id/btnCoordinates"
-        android:layout_centerHorizontal="true"
+        <LinearLayout
+            android:id="@+id/showLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/background"
+            android:gravity="center|left"
+            android:padding="10dp">
 
-        android:src="@drawable/img_compass"
-        android:contentDescription="@string/todo" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/colorMain"
+                android:elevation="0dp"
+                android:src="@drawable/img_location"
+                app:elevation="0dp"
+                app:fabSize="mini" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:fontFamily="@font/productsansmedium"
-        android:layout_centerHorizontal="true"
-        android:text="@string/set_your_target"
-        android:id="@+id/btnCoordinates"
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/productsansmedium"
+                android:text="@string/distance_to_destination"
+                android:textColor="@color/textColor" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:indeterminate="true" />
+
+            <TextView
+                android:id="@+id/degreeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/productsansmedium"
+                android:text=""
+                android:textColor="@color/colorMain"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imageViewCompass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/todo"
+
+            android:padding="10dp"
+            android:src="@drawable/img_compass" />
+
     </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="20dp"
+        android:id="@+id/btnLayout"
+        android:elevation="10dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+
+            android:background="#fff"
+            android:layout_marginBottom="30dp"
+            android:padding="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_press"
+                android:elevation="5dp"
+                android:fontFamily="@font/productsansmedium"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/set_your_target"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorBtn"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

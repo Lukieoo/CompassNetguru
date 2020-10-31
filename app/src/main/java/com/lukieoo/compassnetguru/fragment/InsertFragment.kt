@@ -27,6 +27,7 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
 
     @Inject
     lateinit var myCoordinates: MyCoordinates
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,7 +50,6 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
             if (navController.currentDestination?.id == R.id.insertFragment) {
                 navController.popBackStack()
             }
-
         }
     }
 

@@ -1,17 +1,19 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/textColorBtn</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="MyEditTextStyle" parent="android:Widget.EditText">
-        <item name="android:textColor">#400000</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="drawableTint">@color/colorMain</item>
+        <item name="android:padding">10dp</item>
 
-        <item name="android:background">@android:drawable/editbox_background_normal</item>
+        <item name="android:background">@drawable/editext_backround</item>
         <item name="android:textSize">15sp</item>
     </style>
 

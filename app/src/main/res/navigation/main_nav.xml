@@ -11,7 +11,11 @@
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_insertFragment"
-            app:destination="@id/insertFragment" />
+            app:destination="@id/insertFragment"
+            app:enterAnim="@anim/slide_down_from_the_top"
+            app:exitAnim="@anim/slide_wait"
+            app:popEnterAnim="@anim/slide_wait"
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
 
     <fragment

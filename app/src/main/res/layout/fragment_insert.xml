@@ -1,122 +1,146 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    android:padding="20dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/current"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/productsansmedium"
-        android:padding="10dp"
-        android:text="Your Current position" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout1"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/current"
-        android:hint="latitude">
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="60dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/latitudeCurrent"
-            style="@style/MyEditTextStyle"
+        <RelativeLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_loaction_your"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            android:background="#fff"
+            android:padding="30dp">
 
-            android:drawablePadding="10dip"
-            android:enabled="false"
+            <TextView
+                android:textColor="@color/colorMain"
+                android:id="@+id/current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/productsansmedium"
+                android:padding="10dp"
+                android:text="@string/your_current_position" />
 
-            android:fontFamily="@font/productsansmedium"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/current"
+                android:hint="@string/latitude">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inputLayout1"
-        android:hint="longitude">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/latitudeCurrent"
+                    style="@style/MyEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_loaction_your"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/longitudeCurrent"
-            style="@style/MyEditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_loaction_your"
-            android:drawablePadding="10dip"
-            android:enabled="false"
+                    android:drawablePadding="10dip"
+                    android:enabled="false"
 
-            android:fontFamily="@font/productsansmedium"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+                    android:fontFamily="@font/productsansmedium"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/inputLayout1"
+                android:hint="@string/longitude">
 
-    <TextView
-        android:id="@+id/target"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputLayout2"
-        android:fontFamily="@font/productsansmedium"
-        android:padding="10dp"
-        android:text="Your target" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/target"
-        android:hint="Insert latitude ">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/latitude"
-            style="@style/MyEditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_location"
-            android:drawablePadding="10dip"
-            android:fontFamily="@font/productsansmedium"
-
-            android:inputType="numberDecimal|numberSigned" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inputLayout3"
-        android:hint="Insert longitude">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/longitude"
-            style="@style/MyEditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/latitude"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_location"
-            android:drawablePadding="10dip"
-            android:fontFamily="@font/productsansmedium"
-
-            android:inputType="numberDecimal|numberSigned" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/longitudeCurrent"
+                    style="@style/MyEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_loaction_your"
+                    android:drawablePadding="10dip"
+                    android:enabled="false"
+                    android:fontFamily="@font/productsansmedium"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/btnSetCoordinates"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/productsansmedium"
-        android:text="set cordinates"
-        android:textSize="15sp"
+            <TextView
+                android:textColor="@color/colorMain"
+                android:id="@+id/target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/inputLayout2"
+                android:fontFamily="@font/productsansmedium"
+                android:padding="10dp"
+                android:text="@string/your_destination" />
 
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/target"
+                android:hint="@string/insert_latitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/latitude"
+                    style="@style/MyEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_location"
+                    android:drawablePadding="10dip"
+                    android:fontFamily="@font/productsansmedium"
+
+                    android:inputType="numberDecimal|numberSigned" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/inputLayout3"
+                android:hint="@string/insert_longitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/longitude"
+                    style="@style/MyEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/latitude"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_location"
+                    android:drawablePadding="10dip"
+                    android:fontFamily="@font/productsansmedium"
+
+                    android:inputType="numberDecimal|numberSigned" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+
+                android:id="@+id/btnSetCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_press"
+                android:elevation="5dp"
+                android:fontFamily="@font/productsansmedium"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/set_destination"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/textColorBtn"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

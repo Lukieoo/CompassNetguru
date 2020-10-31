@@ -4,10 +4,13 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.BitmapDrawable
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+
 import android.provider.Settings
+import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.PermissionChecker.checkCallingOrSelfPermission
@@ -24,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
+import com.lukieoo.compassnetguru.utils.Intent as DataIntent
 
 private const val PERMISSION_REQUEST = 10
 
@@ -75,15 +79,12 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
     private fun initView() {
 
         if (isLoaded) hideView()
-
-            btnCoordinates.setOnClickListener {
-                navController = Navigation.findNavController(it)
-                if (navController.currentDestination?.id == R.id.mainFragment) {
-                    navController.navigate(R.id.action_mainFragment_to_insertFragment)
-                }
+        btnCoordinates.setOnClickListener {
+            navController = Navigation.findNavController(it)
+            if (navController.currentDestination?.id == R.id.mainFragment) {
+                navController.navigate(R.id.action_mainFragment_to_insertFragment)
             }
-
-
+        }
     }
 
     private fun initViewModel() {
@@ -96,15 +97,15 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
                 if (degreeTitle != null) {
 
-                    if (!isLoaded) showView()
 
+                    if (!isLoaded) showView()
                     degreeTitle!!.text =
-                        "Distance from the destination: " + (mathematicalOperations.distance(
+                         (mathematicalOperations.distance(
                             it.latitude,
                             it.longitude,
                             myCoordinates.getLatitude(),
                             myCoordinates.getLongitude()
-                        ) * 1000).toInt() + "m"
+                        ) * 1000).toInt().toString() + " m"
 
 
 
@@ -191,13 +192,26 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
                 }
             }
             if (allSuccess) {
+
+                localization!!.setListenerLocationUpdates(viewModel)
+                var gps_enabled = false
+                try {
+                    var lm: LocationManager =
+                        requireActivity().getSystemService(Context.LOCATION_SERVICE) as (LocationManager)
+                    gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                if (!gps_enabled) {
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+
                 localization!!.setListenerLocationUpdates(viewModel)
             }
 
 
         }
     }
-
     private fun showView() {
         progressBar.visibility = View.GONE
         isLoaded = true
