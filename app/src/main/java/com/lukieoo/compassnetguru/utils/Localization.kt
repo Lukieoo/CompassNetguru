@@ -15,7 +15,9 @@ import androidx.lifecycle.Observer
 import com.lukieoo.compassnetguru.model.Coordinates
 import com.lukieoo.compassnetguru.ui.MainViewModel
 
-
+/**
+ * Get your current Localization, latitude and longitude
+ */
 class Localization(private val context: Context) {
 
 
@@ -41,7 +43,9 @@ class Localization(private val context: Context) {
             context.getSystemService(AppCompatActivity.LOCATION_SERVICE) as LocationManager?
 
     }
-
+    /**
+     * Mandatory to call , this method active your Location coordinates
+     */
     @SuppressLint("MissingPermission")
     open fun setListenerLocationUpdates(viewModel: MainViewModel) {
         this.viewModel = viewModel

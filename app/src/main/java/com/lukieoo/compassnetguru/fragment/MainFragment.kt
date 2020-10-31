@@ -4,13 +4,11 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.BitmapDrawable
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 
 import android.provider.Settings
-import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.PermissionChecker.checkCallingOrSelfPermission
@@ -27,8 +25,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
-import com.lukieoo.compassnetguru.utils.Intent as DataIntent
-
 private const val PERMISSION_REQUEST = 10
 
 @ExperimentalCoroutinesApi
@@ -42,7 +38,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
     lateinit var localization: Localization
 
     @Inject
-    lateinit var targetHolder: TargetHolder
+    lateinit var destinationHolder: DestinationHolder
 
     @Inject
     lateinit var mathematicalOperations: MathematicalOperations
@@ -110,14 +106,14 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
 
 
                     imageViewCompass.setImageDrawable(
-                        targetHolder.setTarget(
+                        destinationHolder.setTarget(
                             it.latitude,
                             it.longitude,
                             myCoordinates.getLatitude(),
                             myCoordinates.getLongitude()
                         )
                     )
-                    targetHolder.clear()
+                    destinationHolder.clear()
                 }
             })
         }

@@ -19,10 +19,8 @@ import android.widget.TextView
 
 class Compass(private val context: Context) : SensorEventListener {
 
-    // record the compass picture angle turned
     private var currentDegree = 0f
 
-    // device sensor manager
     private var mSensorManager: SensorManager? = null
 
     private var imageViewCompass: ImageView? = null
@@ -33,7 +31,9 @@ class Compass(private val context: Context) : SensorEventListener {
     }
 
 
-
+    /**
+     * Mandatory ! Init your compass imageView here
+     */
     fun setImageViewCompass(imageViewCompass: ImageView?) {
         this.imageViewCompass = imageViewCompass
     }

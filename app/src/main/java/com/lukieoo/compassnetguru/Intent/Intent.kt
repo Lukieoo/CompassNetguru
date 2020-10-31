@@ -1,4 +1,4 @@
-package com.lukieoo.compassnetguru.utils
+package com.lukieoo.compassnetguru.Intent
 
 sealed class Intent() {
     object GetCoordinates: Intent()

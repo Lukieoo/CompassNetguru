@@ -1,7 +1,10 @@
 package com.lukieoo.compassnetguru.utils
 
 import android.content.Context
- 
+
+/**
+ *  Class is a handle of Shared preferences data for destination
+ */
 class MyCoordinates (context: Context){
     
     private val PREFERENCES_NAME="SHARED_PREFRENCES"

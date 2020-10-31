@@ -1,9 +1,8 @@
 package com.lukieoo.compassnetguru.di
 
 import android.content.Context
-import com.lukieoo.compassnetguru.utils.Localization
 import com.lukieoo.compassnetguru.utils.MathematicalOperations
-import com.lukieoo.compassnetguru.utils.TargetHolder
+import com.lukieoo.compassnetguru.utils.DestinationHolder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object TargetModule {
+object DestinationModule {
 
     @Singleton
     @Provides
@@ -22,7 +21,7 @@ object TargetModule {
     }
     @Singleton
     @Provides
-    fun provideTargetHolder(mathematicalOperations:MathematicalOperations,@ApplicationContext context: Context): TargetHolder {
-        return TargetHolder(mathematicalOperations,context)
+    fun provideTargetHolder(mathematicalOperations:MathematicalOperations,@ApplicationContext context: Context): DestinationHolder {
+        return DestinationHolder(mathematicalOperations,context)
     }
 }

@@ -5,8 +5,10 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import com.lukieoo.compassnetguru.R
 
-
-class TargetHolder constructor(
+/**
+ * Class draw a rotated arrow for compass bitmap,
+ */
+class DestinationHolder constructor(
     var mathematicalOperations: MathematicalOperations,
     var context: Context
 ) {
@@ -45,7 +47,9 @@ class TargetHolder constructor(
 
         tempCanvas.drawBitmap(myBitmap, 0f, 0f, paint)
     }
-
+    /**
+     * Return arrow on Bitmap via coordinates
+     */
     fun setTarget(x1: Double, y1: Double, x2: Double, y2: Double): BitmapDrawable {
 
         var angle = mathematicalOperations.azimuth(
@@ -61,14 +65,15 @@ class TargetHolder constructor(
         var y: Int =
             (myBitmap.width / 2f + Math.sin(Math.toRadians(angle - 90)) * (myBitmap.width - 950) / 2).toInt()
 
-//        tempCanvas.drawCircle(x.toFloat(), y.toFloat(), 150f, paint)
         myBitmapArrow = rotateBitmap(myBitmapArrow, angle = angle.toFloat())
         tempCanvas.drawBitmap(myBitmapArrow, x.toFloat(), y.toFloat(), paint)
 
         return BitmapDrawable(context.resources, tempBitmap)
 
     }
-
+    /**
+     * 'clear()' method must be triggered always after 'setTarget'
+     */
     fun clear() {
         tempBitmap =
             Bitmap.createBitmap(

@@ -37,4 +37,16 @@ class MathematicalOperationsTest{
 
         assertEquals("", 33,distance)
     }
+
+    @Test
+    fun testAz2(){
+        var distance= mathematicalOperations.azimuth(
+            0.0,
+            0.0,
+            13.0,
+            12.0
+        ).toInt()
+
+        assertEquals("", 42,distance)
+    }
 }

@@ -2,6 +2,13 @@ package com.lukieoo.compassnetguru.utils
 
 class MathematicalOperations {
 
+    /**
+     * Calculate distance between points on Map
+     * @param lat1 = your latitude
+     * @param lng1 =your  longitude
+     * @param lat2 =destination latitude
+     * @param lng2 =destination longitude
+     */
     fun distance(
         lat1: Double,
         lng1: Double,
@@ -29,7 +36,13 @@ class MathematicalOperations {
         return rad * 180.0 / Math.PI
     }
 
-
+    /**
+     * Calculate azimuth
+     * @param x1 = your latitude
+     * @param y1 =your  longitude
+     * @param x2 =destination latitude
+     * @param y2 =destination longitude
+     */
     fun azimuth(x1: Double, y1: Double, x2: Double, y2: Double): Double {
 
         var pi: Double
