@@ -91,8 +91,7 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
     private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
-        activity.let {
-            viewModel.getCoordinates().observe(it!!, Observer {
+            viewModel.getCoordinates().observe(viewLifecycleOwner, Observer {
                 if (it.latitude != null && it.longitude != null) {
                     if (latitudeCurrent != null && longitudeCurrent != null) {
                         latitudeCurrent.text = it.latitude.toString().toEditable()
@@ -108,7 +107,6 @@ class InsertFragment constructor() : Fragment(R.layout.fragment_insert) {
             })
 
 
-        }
     }
 
     override fun onPause() {

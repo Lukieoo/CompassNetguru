@@ -75,6 +75,7 @@ class DestinationHolder constructor(
      * 'clear()' method must be triggered always after 'setTarget'
      */
     fun clear() {
+
         tempBitmap =
             Bitmap.createBitmap(
                 myBitmap.width,

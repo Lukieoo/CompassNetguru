@@ -88,8 +88,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
 
-        activity?.let {
-            viewModel.getCoordinates().observe(it, Observer {
+            viewModel.getCoordinates().observe(viewLifecycleOwner, Observer {
 
                 if (degreeTitle != null) {
 
@@ -116,7 +115,7 @@ class MainFragment constructor() : Fragment(R.layout.fragment_main) {
                     destinationHolder.clear()
                 }
             })
-        }
+
     }
 
     private fun initCompass() {
